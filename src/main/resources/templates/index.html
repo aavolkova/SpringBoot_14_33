@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      <!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">-->
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+    <link rel="stylesheet" href="/css/indexstyle.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+
+    <div class="w3-display-topleft w3-padding-large w3-xlarge">
+        Insecure Page!
+    </div>
+
+    <div class="w3-display-middle">
+        <h1 class="w3-jumbo w3-animate-top">Landing Page</h1>
+
+
+
+        <div sec:authorize="isAuthenticated()">
+            This content is only shown to authenticated users.
+        </div>
+        <div sec:authorize="hasAuthority('ADMIN')">
+            This content is only shown to administrators.
+        </div>
+        <div sec:authorize="hasAuthority('USER')">
+            This content is only shown to users.
+        </div>
+
+        <div style="text-align: center"> Logged user: <span sec:authentication="name">The user is not logged in yet</span>
+            <br><br>
+            <div style="text-align: center">
+
+
+
+
+                    <a class="btn btn-info" href="/login" type="submit">Log In</a>
+                    <br>
+                    <a class="btn btn-info" href="/register" type = "submit">Register</a>
+                    <br>
+                    <a class="btn btn-info" href="/logout">Logout</a>
+                    <br>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+
